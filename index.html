@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Zeyada', cursive;
+            
+        }
+        .mainFlex{
+            display: flex;
+            
+            min-height: 100vh; 
+            
+        }
+        .images{
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            text-align: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            justify-content: center;
+            align-items: center;
+            transition: 2s;
+      
+        }
+        p{
+            font-size: 80px;
+            flex: 1;
+            transition: transform 0.5s;
+            cursor: pointer;
+            
+        }
+        .panel1 {
+            background-image: url(panel1.jpg);
+        }
+        .panel2 {
+            background-image: url(panel2.jpg);
+        }
+        .panel3 {
+            background-image: url(panel3.jpg);
+        }
+        .images :first-child{
+            transform: translateY(-100%);
+        }
+        .images :last-child{
+            transform: translateY(+100%);
+        }
+
+        .active *:first-child{ transform: translateY(0);}
+        .active *:last-child{ transform: translateY(0);}
+
+        .images.open {
+            flex: 3
+        }
+
+    </style>
+</head>
+<body>
+    <div class="mainFlex">
+        <div class="images panel1">
+            <p>kot</p>
+            <p>pies</p>
+            <p>krowa</p>
+        </div>
+        <div class="images panel2">
+            <p>lubi</p>
+            <p>kocha</p>
+            <p>szanuje</p>
+        </div>
+        <div class="images panel3">
+            <p>ciebie</p>
+            <p>mnie</p>
+            <p>nas</p>
+        </div>
+    </div> 
+
+    <script>
+        const peki = document.querySelectorAll(".images")
+
+        function imageResize(){
+            this.classList.toggle("open")
+
+        }
+
+function changeStatus(e){
+        if (e.propertyName.includes('flex')){
+            this.classList.toggle("active")
+        }
+}
+
+
+        peki.forEach(element => element.addEventListener("transitionend", changeStatus))
+        peki.forEach(element => element.addEventListener("click", imageResize))
+    </script>
+</body>
+</html>
